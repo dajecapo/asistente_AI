@@ -78,7 +78,40 @@
       margin: 0 auto;
       padding: 0 10px;
     }
-  </style>
+  
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 22px;
+      }
+      .accordion {
+        font-size: 16px;
+      }
+      .accordion:hover {
+        font-size: 17px;
+      }
+      .panel p {
+        font-size: 15px;
+      }
+      input#buscador {
+        width: 90vw !important;
+      }
+      #busquedaSticky {
+        padding: 10px 5px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .panel p {
+        font-size: 14px;
+      }
+      #mostrarBusqueda {
+        font-size: 13px;
+        padding: 8px 12px;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+</style>
 </head>
 <body>
 
@@ -94,10 +127,26 @@
 <h1>Consulta Inteligente para Personas Mayores</h1>
 
 
-<div style="text-align: center; padding: 30px 20px;">
-  <input type="text" id="buscador" placeholder="Buscar un tema..." 
-    style="width: 80%; max-width: 600px; padding: 12px; font-size: 16px; border: 1px solid #aaa; border-radius: 6px;">
+<div id="busquedaSticky" style="position: sticky; top: 0; background-color: white; z-index: 1000; padding: 15px 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <div style="text-align: center; position: relative;">
+    <button onclick="cerrarBusqueda()" style="position: absolute; top: -10px; right: 10px; font-size: 20px; background: none; border: none; color: #888; cursor: pointer;">✖</button>
+    <div style="display: inline-flex; align-items: center; position: relative;">
+      <span style="position: absolute; left: 12px; font-size: 18px; color: #888;">🔍</span>
+      <input type="text" id="buscador" placeholder="Buscar un tema..." 
+        style="padding: 10px 10px 10px 36px; width: 80vw; max-width: 600px; font-size: 16px; border: 1px solid #aaa; border-radius: 6px;"
+        onkeypress="if(event.key === 'Enter'){buscarTermino();}">
+    </div>
+    <div style="margin-top: 10px;">
+      <button onclick="buscarTermino()" style="padding: 6px 12px; font-size: 14px;">Buscar</button>
+      <button onclick="navegarResultado(-1)" style="padding: 6px 12px; font-size: 14px;">⬅ Anterior</button>
+      <button onclick="navegarResultado(1)" style="padding: 6px 12px; font-size: 14px;">Siguiente ➡</button>
+    </div>
+    <div id="contador-resultados" style="margin-top: 10px; font-size: 15px; color: #444;"></div>
+  </div>
 </div>
+<button id="mostrarBusqueda" onclick="mostrarBusqueda()" style="display:none; position:fixed; bottom:20px; right:20px; padding:10px 14px; font-size:14px; background:#000; color:white; border:none; border-radius:6px; cursor:pointer; z-index:1001;">
+  🔍 Mostrar buscador
+</button>
 
 <div class="container">
   <button class="accordion">Reclamaciones</button>
@@ -162,10 +211,15 @@
   <p>Gracias a este sistema, las personas mayores pueden evitar esperas innecesarias o tratos inadecuados al realizar trámites o al intentar ejercer algún derecho. Por ello, lo llamamos: <em>tecnología con alma humana</em>.</p>
 </section>
 <script>
-  document.getElementById("buscador").addEventListener("input", function () {
-    var term = this.value.toLowerCase();
+  let coincidencias = [];
+  let actual = 0;
+
+  function buscarTermino() {
+    var term = document.getElementById("buscador").value.toLowerCase();
     var panels = document.getElementsByClassName("panel");
     var accordions = document.getElementsByClassName("accordion");
+    coincidencias = [];
+    actual = 0;
 
     for (let i = 0; i < panels.length; i++) {
       const panel = panels[i];
@@ -175,12 +229,54 @@
       if (term && contenido.includes(term)) {
         panel.style.display = "block";
         accordion.style.backgroundColor = "#333";
+        coincidencias.push(panel);
       } else {
         panel.style.display = "none";
         accordion.style.backgroundColor = "#000";
       }
     }
-  });
+
+    const contador = document.getElementById("contador-resultados");
+    if (term.length > 0) {
+      contador.innerText = coincidencias.length + " coincidencia" + (coincidencias.length !== 1 ? "s" : "") + " encontrada" + (coincidencias.length !== 1 ? "s" : "");
+    } else {
+      contador.innerText = "";
+    }
+
+    if (coincidencias.length > 0) {
+      resaltarActual();
+    }
+  }
+
+  function navegarResultado(direccion) {
+    if (coincidencias.length === 0) return;
+    actual = (actual + direccion + coincidencias.length) % coincidencias.length;
+    resaltarActual();
+  }
+
+  function resaltarActual() {
+    coincidencias.forEach((panel, index) => {
+      panel.style.border = (index === actual) ? "2px solid gold" : "1px solid #ccc";
+      if (index === actual) {
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    const contador = document.getElementById("contador-resultados");
+    contador.innerText = (coincidencias.length > 0)
+      ? "Resultado " + (actual + 1) + " de " + coincidencias.length
+      : "";
+  }
+
+  function cerrarBusqueda() {
+    document.getElementById("busquedaSticky").style.display = "none";
+    document.getElementById("mostrarBusqueda").style.display = "block";
+  }
+
+  function mostrarBusqueda() {
+    document.getElementById("busquedaSticky").style.display = "block";
+    document.getElementById("mostrarBusqueda").style.display = "none";
+  }
 </script>
 </body>
 </html>
