@@ -83,14 +83,21 @@
 <body>
 
 <header></header>
-
-<section style="background-color: #fff; padding: 30px 20px; text-align: center; font-size: 18px; line-height: 1.6; max-width: 900px; margin: auto;">
-  <p>Este espacio usa inteligencia artificial con fines sociales para empoderar a las personas mayores, brindándoles información verificada y asistencia accesible que apoye dignamente sus derechos sociales y económicos, trámites de pensión y acceso a servicios médicos.</p>
-  <p>La IA, aplicada con sentido humano, puede contribuir a construir un entorno social más justo para los grupos vulnerables.</p>
+<section style="background-color: #f9f9f9; padding: 30px 30px; text-align: left; font-size: 18px; line-height: 1.5; max-width: 900px; margin: 30px auto; border: 1px solid #ccc; border-radius: 12px;">
+  <p style="margin: 0;">Este espacio usa inteligencia artificial con fines sociales para empoderar a las personas mayores, brindándoles información verificada y asistencia accesible que apoye dignamente sus derechos sociales y económicos, trámites de pensión y acceso a servicios médicos.</p>
+  <p style="margin: 0;">La IA, aplicada con sentido humano, puede contribuir a construir un entorno social más justo para los grupos vulnerables.</p>
 </section>
 
 
+
+
 <h1>Consulta Inteligente para Personas Mayores</h1>
+
+
+<div style="text-align: center; padding: 30px 20px;">
+  <input type="text" id="buscador" placeholder="Buscar un tema..." 
+    style="width: 80%; max-width: 600px; padding: 12px; font-size: 16px; border: 1px solid #aaa; border-radius: 6px;">
+</div>
 
 <div class="container">
   <button class="accordion">Reclamaciones</button>
@@ -147,5 +154,33 @@
   }
 </script>
 
+<section style="background-color: #111; color: #eee; padding: 30px 20px; font-size: 16px; line-height: 1.6; text-align: left; max-width: 900px; margin: 50px auto; border-radius: 10px;">
+  <h2 style="color: gold; font-size: 20px;">Créditos y propósito</h2>
+  <p>Este proyecto fue creado con el objetivo de poner la inteligencia artificial al servicio de las personas mayores, brindándoles acceso digno, claro y directo a información sobre sus derechos sociales, pensiones y servicios médicos.</p>
+  <p>No es un sitio oficial ni representa a ninguna institución pública. Fue desarrollado de forma independiente con fines informativos y sociales.</p>
+  <p>Desarrollado por <strong>Daniel Jesús Carrillo Polanco</strong>, comunicólogo y abogado, con el apoyo técnico de inteligencia artificial generativa.</p>
+  <p>Gracias a este sistema, las personas mayores pueden evitar esperas innecesarias o tratos inadecuados al realizar trámites o al intentar ejercer algún derecho. Por ello, lo llamamos: <em>tecnología con alma humana</em>.</p>
+</section>
+<script>
+  document.getElementById("buscador").addEventListener("input", function () {
+    var term = this.value.toLowerCase();
+    var panels = document.getElementsByClassName("panel");
+    var accordions = document.getElementsByClassName("accordion");
+
+    for (let i = 0; i < panels.length; i++) {
+      const panel = panels[i];
+      const accordion = accordions[i];
+      const contenido = panel.innerText.toLowerCase();
+
+      if (term && contenido.includes(term)) {
+        panel.style.display = "block";
+        accordion.style.backgroundColor = "#333";
+      } else {
+        panel.style.display = "none";
+        accordion.style.backgroundColor = "#000";
+      }
+    }
+  });
+</script>
 </body>
 </html>
