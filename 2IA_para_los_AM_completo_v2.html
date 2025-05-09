@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IA para los AM</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #111;
+    }
+
+    header {
+      background-color: #000;
+      background-image: url('https://github.com/dajecapo/asistente_AI/blob/main/Captura%20de%20pantalla%202025-05-09%20131733.jpg?raw=true');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 500px;
+      width: 100%;
+      border-bottom: 6px solid black;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 26px;
+      padding: 30px 10px 10px;
+    }
+
+    .accordion {
+      margin-top: 12px;
+      border-top: 1px solid #444;
+
+      background-color: #000;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      outline: none;
+      border: none;
+      font-size: 18px;
+      transition: 0.3s;
+      border-bottom: 1px solid #333;
+    }
+
+    .accordion:hover {
+      color: gold;
+      font-size: 19px;
+    }
+
+    .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: #f2f2f2;
+      overflow: hidden;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .panel p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header></header>
+
+<h1>Consulta Inteligente para Personas Mayores</h1>
+
+<div class="container">
+  <button class="accordion">Reclamaciones</button>
+  <div class="panel">
+    <p><strong>¿Qué hago si me pagan menos de lo que debería en mi pensión?</strong><br>Puedes presentar una queja ante el IMSS para que revisen el cálculo. También puedes acudir a la CONAMED o PRODECON si no se resuelve.</p>
+    <p><strong>¿Qué hago si tengo menos semanas cotizadas de las que trabajé?</strong><br>Puedes solicitar una corrección de datos ante el IMSS, aportando pruebas como recibos de nómina, contratos, constancias de empleo o declaraciones fiscales.</p>
+    <p><strong>¿Dónde puedo presentar una queja si el IMSS no resuelve mi caso?</strong><br>Puedes acudir a la CONAMED (salud) o a la PRODECON (si se trata de AFORE o SAT). También puedes presentar un amparo si se violan tus derechos.</p>
+  </div>
+
+  <button class="accordion">Derechos del Pensionado</button>
+  <div class="panel">
+    <p><strong>¿Tengo derecho a servicios médicos después de pensionarme por el IMSS?</strong><br>Sí, los pensionados conservan el derecho a atención médica integral en clínicas y hospitales del IMSS.</p>
+    <p><strong>¿Qué otros beneficios tengo como pensionado del IMSS?</strong><br>Puedes acceder a prestaciones sociales como velatorios, centros recreativos y orientación médica y psicológica.</p>
+    <p><strong>¿Puedo acceder a préstamos como pensionado del IMSS?</strong><br>El IMSS no otorga préstamos directamente, pero algunas AFORES o instituciones como PensionISSSTE ofrecen esa opción.</p>
+  </div>
+
+  <button class="accordion">Pensión y Trabajo</button>
+  <div class="panel">
+    <p><strong>¿Puedo seguir trabajando después de pensionarme por el IMSS?</strong><br>Sí, puedes seguir trabajando después de pensionarte, pero es necesario que no estés activo en el IMSS al momento de tramitar la pensión.</p>
+    <p><strong>¿Puedo trabajar en el mismo empleo donde estaba antes de pensionarme?</strong><br>Sí, pero debe haber un intervalo entre la baja y la nueva contratación. No debe ser una continuación inmediata ni con el mismo puesto.</p>
+    <p><strong>¿Qué pasa si me dan de alta en el IMSS con el mismo NSS después de pensionarme?</strong><br>Tu pensión puede ser suspendida si se comprueba que sigues en el mismo trabajo o no hubo una separación real.</p>
+  </div>
+
+  <button class="accordion">Pensión por Viudez</button>
+  <div class="panel">
+    <p><strong>¿Quién tiene derecho a pensión por viudez en el IMSS?</strong><br>El o la cónyuge supérstite, concubina o concubinario tienen derecho si el asegurado fallecido tenía al menos 150 semanas cotizadas o estaba recibiendo pensión.</p>
+    <p><strong>¿Cuánto se paga por pensión de viudez?</strong><br>La pensión es del 90% de la pensión que recibía o habría recibido el asegurado fallecido.</p>
+    <p><strong>¿Puedo perder la pensión por viudez?</strong><br>Sí, si te casas o vives en concubinato nuevamente. También si dejas de cobrar la pensión por más de 6 meses sin justificación.</p>
+  </div>
+
+  <button class="accordion">Orfandad y Ascendientes</button>
+  <div class="panel">
+    <p><strong>¿Quién puede recibir pensión por orfandad en el IMSS?</strong><br>Los hijos menores de 16 años o hasta 25 si estudian, y los que tengan discapacidad, pueden recibirla si el asegurado fallecido tenía al menos 150 semanas cotizadas o era pensionado.</p>
+    <p><strong>¿Los padres del asegurado fallecido pueden recibir pensión?</strong><br>Sí, si dependían económicamente del asegurado fallecido y no existen cónyuge, concubino o hijos con derecho a pensión.</p>
+    <p><strong>¿Cuánto se paga por pensión de orfandad?</strong><br>El IMSS otorga el 20% de la pensión del asegurado por cada hijo con derecho. Si ambos padres fallecen, el monto puede aumentar.</p>
+  </div>
+
+  <button class="accordion">Defensa de Derechos</button>
+  <div class="panel">
+    <p><strong>¿Qué puedo hacer si me maltratan o ignoran en el IMSS durante un trámite?</strong><br>Puedes presentar una queja formal ante el Órgano Interno de Control del IMSS o ante la CONAMED si se trata de servicios médicos.</p>
+    <p><strong>¿Qué hago si el IMSS no me paga mi pensión completa o me ignoran?</strong><br>Primero presenta un reclamo ante el IMSS. Si no responden o no solucionan, acude a la PRODECON o incluso puedes recurrir al amparo constitucional.</p>
+    <p><strong>¿Puedo denunciar públicamente malos tratos o negligencia del IMSS?</strong><br>Sí. Puedes acudir también a la CNDH si consideras que se han vulnerado tus derechos humanos como persona mayor.</p>
+  </div>
+</div>
+
+<script>
+  const acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    });
+  }
+</script>
+
+</body>
+</html>
